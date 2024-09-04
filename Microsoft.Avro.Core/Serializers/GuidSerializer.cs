@@ -44,7 +44,7 @@ namespace Microsoft.Hadoop.Avro.Serializers
 
         protected override Expression BuildSerializerSafe(Expression encoder, Expression value)
         {
-            Expression toByteArray = Expression.Call(value, this.Schema.RuntimeType.GetMethod("ToByteArray"));
+            Expression toByteArray = Expression.Call(value, this.Schema.RuntimeType.GetMethod("ToByteArray", Type.EmptyTypes));
             return Expression.Call(encoder, this.Encode("Fixed"), new[] { toByteArray });
         }
 
